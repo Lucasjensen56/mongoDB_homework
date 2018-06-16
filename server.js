@@ -36,9 +36,7 @@ mongoose.connect("mongodb://localhost/articleScraper");
 app.get("/scrape", function(req, res) {
 	axios.get("http://www.startribune.com/").then(function(response) {
 		var $ = cheerio.load(response.data);
-
 		$("div.tease").each(function(i, element) {
-
 			
 			var result = {};
 
@@ -71,7 +69,7 @@ app.get("/scrape", function(req, res) {
 
 // route to grab aritcles from database
 app.get("/articles", function(req, res) {
-	db.Article.find({})
+	db.Article.find({}).sort({ _id: -1})
 	.then(function(dbArticle) {
 		res.json(dbArticle);
 	})
