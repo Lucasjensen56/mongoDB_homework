@@ -43,9 +43,12 @@ app.get("/scrape", function(req, res) {
 			result.title = $(this)
 			.children("h3")
 			.text();
+
 			result.link = $(this)
-			.children("a")
+			.children()
+			.children()
 			.attr("href");
+
 			result.summary = $(this)
 			.children("div.tease-summary")
 			.text();
@@ -53,7 +56,7 @@ app.get("/scrape", function(req, res) {
 			.children("div.tease-timestamp.js-timestamp ")
 			.text()
 
-			// console.log(result)
+			console.log(result.link)
 
 			db.Article.create(result)
 			.then(function(dbArticle) {
