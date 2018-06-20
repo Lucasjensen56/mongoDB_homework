@@ -12,7 +12,7 @@ $.getJSON("/articles", function(data) {
 		$("#articles").append("<button data-id='" + data[i]._id + "' class='btn noteButton'>" + "Add Note" + "</button>")
 		$("#articles").append("<button data-id='" + data[i]._id + "' id='" + data[i]._id + "' class='btn showComments' > " + "Show Comments" + "</button>")
 		$("#articles").append("<div id='" + data[i]._id + "' class='showCommentsDiv'>" + "</div>")
-		// $(".showCommentsDiv").append("<p id='" + data[i]._id + "' class='body-input'>" + "</p>")
+		$(".showCommentsDiv").append("<p id='" + data[i]._id + "' class='body-input'>" + "</p>")
 	}
 });		
 
@@ -33,16 +33,9 @@ $(document).on("click", ".showComments", function() {
   	console.log(data)
 
   	// $("#showCommentsDiv").append("<p id='body-input'>" + "</p>");
-
- 
   	if (data.note) {
 
-
-  		$(`#${thisId}`).text(data.note.body);
-
-
-
-  		// add the text to the p tag, not the id of the input field. need to place id on to the p tag somehow
+  		$(`div#${thisId}.showCommentsDiv`).text(data.note.body);
   	}
   	
   })
