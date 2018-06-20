@@ -1,7 +1,11 @@
 
-
+const articleNotes = []
 
 $.getJSON("/articles", function(data) {
+	data.forEach(article => {
+		articleNotes.push({_id: article._id, notes: []})
+	})
+	console.log(data, ' is data from /articless')
 	for (var i = 0; i < data.length; i++) {
 		$("#articles").append("<hr class='uk-divider-icon'>")
 		$("#articles").append("<p class='col-12' data-id='" + data[i]._id + "'>")
@@ -30,12 +34,17 @@ $(document).on("click", ".showComments", function() {
     url: "/articles/" + thisId
   })
   .then(function(data) {
-  	console.log(data)
+  	console.log(data, ' FROM /ARTICLES')
 
   	// $("#showCommentsDiv").append("<p id='body-input'>" + "</p>");
   	if (data.note) {
-
-  		$(`div#${thisId}.showCommentsDiv`).text(data.note.body);
+  		const notes = articleNotes.filter(article => article._id === thisId)[0].notes
+  		notes.push(data.note)
+  		notes.forEach(note => {
+  			// $(`div#${thisId}.showCommentsDiv`).empty()
+  			$(`div#${thisId}.showCommentsDiv`).append('<p>' + note.body + '</p>')
+  		})
+  		text(JSON.stringify(notes));
   	}
   	
   })
@@ -66,10 +75,10 @@ $(document).on("click", ".noteButton", function() {
 })
 
 
-$(document).on("click", "#loadNewArticles", function() {
+// $(document).on("click", "#loadNewArticles", function() {
 
 
-})
+// })
 
 
 
