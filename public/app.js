@@ -1,4 +1,6 @@
 
+
+
 $.getJSON("/articles", function(data) {
 	for (var i = 0; i < data.length; i++) {
 		$("#articles").append("<hr class='uk-divider-icon'>")
@@ -10,7 +12,7 @@ $.getJSON("/articles", function(data) {
 		$("#articles").append("<button data-id='" + data[i]._id + "' class='btn noteButton'>" + "Add Note" + "</button>")
 		$("#articles").append("<button data-id='" + data[i]._id + "' id='" + data[i]._id + "' class='btn showComments' > " + "Show Comments" + "</button>")
 		$("#articles").append("<div id='" + data[i]._id + "' class='showCommentsDiv'>" + "</div>")
-		$(".showCommentsDiv").append("<p id='" + data[i]._id + "' class='body-input'>" + "</p>")
+		// $(".showCommentsDiv").append("<p id='" + data[i]._id + "' class='body-input'>" + "</p>")
 	}
 });		
 
@@ -32,13 +34,11 @@ $(document).on("click", ".showComments", function() {
 
   	// $("#showCommentsDiv").append("<p id='body-input'>" + "</p>");
 
-  	// var noteBody = 
-
+ 
   	if (data.note) {
 
 
-
-  		$(`p#${thisId}`).text(data.note.body);
+  		$(`#${thisId}`).text(data.note.body);
 
 
 
@@ -70,5 +70,14 @@ $(document).on("click", ".noteButton", function() {
 		console.log(data);
 		$(".form-input").empty();
 	})
+})
+
+
+$(document).on("click", "#loadNewArticles", function() {
+
 
 })
+
+
+
+

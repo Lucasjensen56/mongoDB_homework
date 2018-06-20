@@ -43,6 +43,10 @@ mongoose.connect(MONGODB_URI);
 
 // routes
 
+
+
+
+
 // get the scraping results
 app.get("/scrape", function(req, res) {
 	axios.get("http://www.startribune.com/").then(function(response) {
