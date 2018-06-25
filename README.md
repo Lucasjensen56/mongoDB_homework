@@ -31,3 +31,5 @@ A web app that lets user view and leave comments on the latest news from the Sta
 
 ## Deployment
 
+	heroku: https://minnesota-news-scraper.herokuapp.com
+
