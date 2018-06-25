@@ -36,16 +36,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 
-
-// mongoose.connect("mongodb://localhost/articleScraper");
-
-// when server starts - creates and save a new user document
-
 // routes
-
-
-
-
 
 // get the scraping results
 app.get("/scrape", function(req, res) {

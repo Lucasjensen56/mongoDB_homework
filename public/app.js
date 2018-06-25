@@ -22,6 +22,7 @@ $.getJSON("/articles", function(data) {
 
 
 
+
 $(document).on("click", ".showComments", function() {
 	console.log("showComments clicked")
 	var thisId = $(this).attr("data-id");
